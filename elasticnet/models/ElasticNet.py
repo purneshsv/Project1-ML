@@ -56,4 +56,4 @@ class ElasticNetResults():
         pass
 
     def predict(self, X):
-        return X @ self.w 
+        return X @ self.coef + self.intercept
