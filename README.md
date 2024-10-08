@@ -1,14 +1,15 @@
-# Project 1 
+# Project 1
 
 Put your README here. Answer the following questions.
 
-* What does the model you have implemented do and when should it be used?
-* How did you test your model to determine if it is working reasonably correctly?
-* What parameters have you exposed to users of your implementation in order to tune performance? (Also perhaps provide some basic usage examples.)
-* Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
+- What does the model you have implemented do and when should it be used?
+- How did you test your model to determine if it is working reasonably correctly?
+- What parameters have you exposed to users of your implementation in order to tune performance? (Also perhaps provide some basic usage examples.)
+- Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
+
 ## 1. Overview
 
-This project implements an **Elastic Net regression model** (ElasticNetModel) that combines L1 (Lasso) and L2 (Ridge) regularization techniques. It is designed to handle high-dimensional datasets, feature selection, and multicollinearity problems. The model uses **gradient descent** for optimization,  function consists of the MSE loss, L1 loss, L2 loss.
+This project implements an **Elastic Net regression model** (ElasticNetModel) that combines L1 (Lasso) and L2 (Ridge) regularization techniques. It is designed to handle high-dimensional datasets, feature selection, and multicollinearity problems. The model uses **gradient descent** for optimization, function consists of the MSE loss, L1 loss, L2 loss.
 
 ## 2. Class and Function Descriptions
 
@@ -20,20 +21,19 @@ The `ElasticNetModel` class implements the Elastic Net regression model. Below a
 
 Initializes the Elastic Net model with the following parameters:
 
-- **`lambdas`** (*float*, default=0.1): Penalty coefficient for regularization.
-- **`thresh`** (*float*, default=0.5): Mixing parameter between L1 and L2 regularization. Value ranges from 0 to 1, where 0 means L1 regularization only and 1 means L2 regularization only.
-- **`max_iter`** (*int*, default=1000): Maximum number of iterations for gradient descent.
-- **`tol`** (*float*, default=1e-4): Tolerance for the stopping condition. If changes in weights are smaller than `tol`, training stops.
-- **`learning_rate`** (*float*, default=0.01): Step size for gradient descent updates.
+- **`lambdas`** (_float_, default=0.1): Penalty coefficient for regularization.
+- **`thresh`** (_float_, default=0.5): Mixing parameter between L1 and L2 regularization. Value ranges from 0 to 1, where 0 means L1 regularization only and 1 means L2 regularization only.
+- **`max_iter`** (_int_, default=1000): Maximum number of iterations for gradient descent.
+- **`tol`** (_float_, default=1e-4): Tolerance for the stopping condition. If changes in weights are smaller than `tol`, training stops.
+- **`learning_rate`** (_float_, default=0.01): Step size for gradient descent updates.
 
 #### `fit(self, X, y)`
 
 Trains the Elastic Net regression model using gradient descent on the provided feature matrix `X` and target values `y`.
 
 - **Parameters**:
-  - **`X`** (*numpy array*): Feature matrix of the training dataset (without intercept).
-  - **`y`** (*numpy array*): Target values corresponding to the training dataset.
-  
+  - **`X`** (_numpy array_): Feature matrix of the training dataset (without intercept).
+  - **`y`** (_numpy array_): Target values corresponding to the training dataset.
 - **Returns**:
   - An instance of `ElasticNetResults`, containing the trained weight coefficients and intercept.
 
@@ -46,8 +46,7 @@ This class stores the results after training the Elastic Net model.
 Predicts target values for the provided feature matrix `X`.
 
 - **Parameters**:
-  - **`X`** (*numpy array*): Feature matrix of the test dataset.
-  
+  - **`X`** (_numpy array_): Feature matrix of the test dataset.
 - **Returns**:
   - Predicted target values.
 
@@ -65,3 +64,13 @@ model.fit(X_train, y_train)
 # Predict on test data
 predictions = model.predict(X_test)
 ```
+
+Team Members:
+Aakash Shivanandappa Gowda
+A20548984
+Dhyan Vasudeva Gowda
+A20592874
+Hongi Jiang
+A20506636
+Purnesh Shivarudrappa Vidhyadhara
+A20552125
