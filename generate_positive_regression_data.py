@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
 def generate_rotated_positive_data(range_x, noise_scale, size, num_features, seed, rotation_angle=45, mode=0):
     """
