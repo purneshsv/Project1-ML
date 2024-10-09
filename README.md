@@ -65,12 +65,13 @@ model.fit(X_train, y_train)
 predictions = model.predict(X_test)
 ```
 
-Team Members:
-Aakash Shivanandappa Gowda
-A20548984
-Dhyan Vasudeva Gowda
-A20592874
-Hongi Jiang
-A20506636
-Purnesh Shivarudrappa Vidhyadhara
-A20552125
+## Team Members:
+- **Aakash Shivanandappa Gowda**  
+  A20548984
+- **Dhyan Vasudeva Gowda**  
+  A20592874
+- **Hongi Jiang**  
+  A20506636
+- **Purnesh Shivarudrappa Vidhyadhara**  
+  A20552125
+
