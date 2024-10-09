@@ -29,8 +29,8 @@ def test_predict_with_csv():
     assert preds == 0.5
 
 # Test code with your generated data
-def test_with_generated_data(type = 0):
-    if(type == 1):
+def test_with_generated_data(data_type = 0):
+    if(data_type == 1):
         # Generate training data
         X, y = generate_negative_data(range_x=[-40, 40], noise_scale=5, size=200, num_features=6, seed=42)
         # Generate test dataset
@@ -109,5 +109,5 @@ def test_with_generated_data(type = 0):
 # Run the tests
 if __name__ == "__main__":
     # test_predict_with_csv()  # Test the original CSV code
-    test_with_generated_data(data_type=0)  # Test with generated positive regression data
+    #test_with_generated_data(data_type=0)  # Test with generated positive regression data
     test_with_generated_data(data_type=1) # Test with generated half positive and half nagetive regression data
