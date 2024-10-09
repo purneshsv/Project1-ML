@@ -9,6 +9,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from elasticnet.models.ElasticNet import ElasticNetModel
 from generate_positive_regression_data import generate_rotated_positive_data
+from generate_nagetive_regression_data import generate_negative_data
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error, r2_score
 
@@ -28,10 +29,21 @@ def test_predict_with_csv():
     assert preds == 0.5
 
 # Test code with your generated data
-def test_with_generated_data():
-    # Generate training data
-    X, y = generate_rotated_positive_data(range_x=[-30, 30], noise_scale=2, size=200, num_features=6, seed=42, rotation_angle=45, mode=0)
+def test_with_generated_data(type = 0):
+    if(type == 1):
+        # Generate training data
+        X, y = generate_negative_data(range_x=[-40, 40], noise_scale=5, size=200, num_features=6, seed=42)
+        # Generate test dataset
+        X_test, y_test = generate_negative_data(range_x=[-40, 40], noise_scale=50, size=50, num_features=6, seed=526)
+        # Instantiate the ElasticNetModel and train
+        model = model = ElasticNetModel(lambdas=0.1, thresh=0.5, max_iter=1000, tol=1e-4, learning_rate=0.0001)#must turn down the learning rate
+    else:
+        X, y = generate_rotated_positive_data(range_x=[-30, 30], noise_scale=2, size=200, num_features=6, seed=42, rotation_angle=45, mode=0)
 
+        X_test, y_test = generate_rotated_positive_data(range_x=[-30, 30], noise_scale=2, size=50, num_features=6, seed=100, rotation_angle=45, mode=1)
+
+        model = ElasticNetModel(lambdas=0.1, thresh=0.5, max_iter=1000, tol=1e-4, learning_rate=0.01)
+    
     # Visualize the generated data
     plt.figure(figsize=(15, 6))
     for i in range(X.shape[1]):
@@ -43,10 +55,6 @@ def test_with_generated_data():
         plt.grid(True)
     plt.tight_layout()
     plt.show()
-
-    # Generate test dataset
-    X_test, y_test = generate_rotated_positive_data(range_x=[-30, 30], noise_scale=2, size=50, num_features=6, seed=100, rotation_angle=45, mode=1)
-
     # Visualize the test data
     plt.figure(figsize=(15, 6))
     for i in range(X_test.shape[1]):
@@ -59,10 +67,8 @@ def test_with_generated_data():
     plt.tight_layout()
     plt.show()
 
-    # Instantiate the ElasticNetModel and train
-    model = ElasticNetModel(lambdas=0.1, thresh=0.5, max_iter=1000, tol=1e-4, learning_rate=0.01)
-    model_results = model.fit(X, y)
 
+    model_results = model.fit(X, y)
     # Predict on the test data
     y_pred = model_results.predict(X_test)
 
@@ -103,4 +109,5 @@ def test_with_generated_data():
 # Run the tests
 if __name__ == "__main__":
     # test_predict_with_csv()  # Test the original CSV code
-    test_with_generated_data()  # Test with generated data
+    test_with_generated_data(data_type=0)  # Test with generated positive regression data
+    test_with_generated_data(data_type=1) # Test with generated half positive and half nagetive regression data
