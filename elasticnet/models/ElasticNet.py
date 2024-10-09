@@ -13,12 +13,21 @@ class ElasticNetModel():
 
 
     def fit(self, X, y):
+
         def calculate_weights(X, residual):
             gradient = (2 / X.shape[0]) * (X.T @ residual)  # MSE gradient
             l1_grad = self.lambdas * self.thresh * np.sign(self.w)  # L1 penalty gradient
-            l2_grad = 2 * self.lambdas * (1 - self.thresh) * self.w  # L2 penalty gradient
+            l2_grad = 2 * self.lambdas * (1 - self.thresh) * self.w  # L2 penalty gradien
 
-            # Total gradient
+            # make sure l1_grad and l2_grad has same dimention with gradient 
+            if l1_grad.ndim == 1:
+                l1_grad = l1_grad.reshape(-1)
+            if l2_grad.ndim == 1:
+                l2_grad = l2_grad.reshape(-1)
+
+            if gradient.ndim > 1:
+                gradient = np.sum(gradient, axis=1)
+
             gradient += l1_grad + l2_grad
             return gradient
 
