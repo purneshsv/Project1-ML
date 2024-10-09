@@ -2,13 +2,11 @@ import sys
 import csv
 import numpy as np
 import os
+import io
 # Add the project root directory to sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-import io
-
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-# Now you can import the elasticnet module
 from elasticnet.models.ElasticNet import ElasticNetModel
 from generate_positive_regression_data import generate_rotated_positive_data
 import matplotlib.pyplot as plt
