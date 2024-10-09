@@ -235,14 +235,3 @@ By fine-tuning these parameters, we can adjust our model to better fit the speci
   - **Noise Reduction Techniques**: Before we even feed data into our model, we can clean it up—filtering out oddball values or smoothing out jumpy signals—to make sure we’re working with the cleanest, clearest data possible.
 
 By understanding these limitations and employing smart strategies to mitigate them, we can enhance the capabilities of Elastic Net, making it a more versatile and reliable tool in our predictive modeling toolkit.
-
-## Team Members:
-
-- Aakash Shivanandappa Gowda
-- A20548984
-- Dhyan Vasudeva Gowda
-- A20592874
-- Hongi Jiang
-- A20506636
-- Purnesh Shivarudrappa Vidhyadhara
-- A20552125
