@@ -316,7 +316,7 @@ By acknowledging these limitations and using smart strategies to overcome them, 
 
 - ## Visualization
 
-### The first train dataset:
+### The First Train Dataset:
 ![alt text](1.png)
 ### Scatter Plots of Train Features
 
@@ -332,7 +332,7 @@ The purpose of these plots is typically to visually assess the relationship betw
 
 Overall, these scatter plots can help in determining which features might be relevant for modeling, although none of the features shown here have a distinct or strong linear relationship with the target variable.
 
-### The first test dataset:
+### The First Test dDataset:
 ![alt text](2.png)
 
 ### Overview of Each Feature Plot Analysis
@@ -340,87 +340,58 @@ Overall, these scatter plots can help in determining which features might be rel
 The image shows scatter plots of six different features (labeled "Test Feature 1" through "Test Feature 6") plotted against "Y_Test". Each subplot represents the data of one specific demension of feature.
 
 
-### Meaning of this graph:
-These plots visualize the dataset to help understand our first dataset.
+### Meaning of This Graph:
+These plots visualize the dataset to help understand our first test dataset.
+This test dataset is used to test the model's predictive ability on partially linear positively correlated data and data without obvious correlation.
 
-
-### Model fitting effect:
+### Model Fitting Effect on first dataset:
 ![alt text](3.png)
 
 
-### Image Description:
-The figure above shows the effect of our model on the first test set based on the first training set, where the red line is the straight line fitted using the least squares method. The yellow points are true values and the blue points are predicted values.
-It can be seen that the fitting effect of our model is very good at predicting the test level.
+### Model Fitting Effect Image Description:
+The figure above shows the effect of our model on the first test dataset based on the first training dataset, where the red line is the straight line fitted using the least squares method. The yellow points are true values and the blue points are predicted values.
+It can be seen that the fitting effect of our model is very good on the first dataset.
 
 
-
-
-### The second train dataset:
+### The Second Train Dataset:
 ![alt text](4.png)
 
 ### Scatter Plot Analysis
 
-The image shows scatter plots of six features (Feature 1 through Feature 6) plotted against the target variable labeled "Y_Train" on the y-axis. The x-axis in each subplot corresponds to the respective feature values.
+The image shows scatter plots of six features (Feature 1 through Feature 6) plotted against "Y_Train" on the y-axis. The x-axis in each subplot corresponds to the respective feature values.
 
 ### Key Observations:
 
 1. **Feature 1 to Feature 3**:
-   - All three features show a strong positive linear correlation with the target variable (Y_Train).
+   - All three features show a strong positive linear correlation.
    - The points align closely along a positively sloped line, indicating that as these feature values increase, the target variable increases in a linear fashion.
 
 2. **Feature 4 to Feature 6**:
-   - These features show a strong negative linear correlation with the target variable.
+   - These features show a strong negative linear correlation.
    - The points align closely along a negatively sloped line, suggesting that as these feature values increase, the target variable decreases.
 
-### General Insights:
-- All six features display clear linear relationships with the target, either positive (Feature 1 to 3) or negative (Feature 4 to 6).
-- These patterns suggest that linear
 
-### The  test dataset:
+### The Second test dataset:
 ![alt text](5.png)
 
 
-### Scatter Plot Analysis for Test Features vs. Target
+### Scatter Plot Analysis for Test Features
 
-The image shows scatter plots of six features (Test Feature 1 through Test Feature 6) plotted against the target variable labeled "Y_Test." Each subplot represents the relationship between a specific feature (on the x-axis) and the target variable (on the y-axis).
-
-### Key Observations:
-
-1. **Feature 1 to Feature 6**:
-   - Each scatter plot shows a wide spread of points without a clear pattern, suggesting weak or no strong linear relationships between the features and the target variable.
-   - The lack of clustering along a line indicates that none of the features exhibit a strong direct correlation with the target.
-   
-2. **Feature 5**:
-   - There appears to be a slight downward trend, indicating a weak negative correlation between Feature 5 and the target (Y_Test).
-
-3. **Feature 6**:
-   - There is some clustering in the lower right quadrant, possibly indicating a negative influence on the target, but the scatter remains wide.
+The image shows scatter plots of six features (Test Feature 1 through Test Feature 6) plotted against "Y_Test." Each subplot represents the data of one specific demension of feature.
 
 ### General Insights:
-- None of the features show a strong, easily identifiable linear correlation with the target variable, as the data points are dispersed across all plots.
-- This suggests that more complex modeling techniques (e.g., non-linear methods) or additional feature engineering may be needed to capture meaningful patterns in the data.
+- The data of the first dimension are scattered in all the plots and do not show obvious characteristics.
+- The data of the second and third dimensions show insignificant positive correlation.
+- The data of the last three dimensions show insignificant negative correlation.
 
+### Meaning of This Graph:
 
+These plots visualize the dataset to help understand our second test dataset.
+This test dataset is used to test the model's predictive ability on partially linear positively correlated data and partially linear negatively correlated data.
 
-
-
+### Model Fitting Effect on second dataset:
 ![alt text](6.png)
 
-### Regression Analysis for Features vs. Actual and Predicted Target Values
-
-The image shows six scatter plots comparing the actual target values and the predicted target values for six features (Feature 1 through Feature 6) against the target variable labeled "Y." Each subplot also includes a red dashed line representing the linear fit for each feature.
-
-### Key Observations:
-
-1. *Feature 1 to Feature 3*:
-   - The fit lines have positive slopes, suggesting a weak positive relationship between these features and the target variable.
-   - The actual and predicted values are dispersed around the fit line with noticeable variance, indicating that the model's predictions are not tightly aligned with the actual values. The fit is somewhat loose, and the features do not have a strong linear relationship with the target.
-
-2. *Feature 4 to Feature 6*:
-   - The fit lines have negative slopes, indicating a negative relationship between these features and the target variable.
-   - Similar to Features 1-3, there is substantial dispersion of the actual and predicted values around the fit line, suggesting weak predictive power and variability in the model's predictions for these features.
-
-### General Insights:
-- All six features exhibit weak linear relationships with the target variable, as evidenced by the scattered points around the fit lines. The model does not capture the target values well, and the fit is not strong.
-- *Features 4, 5, and 6* show negative relationships, meaning that as the feature values increase, the target decreases, though this is not strong.
-- These scatter plots indicate that the model could benefit from more advanced techniques, as simple linear regression appears insufficient for accurately predicting the target values for these features. Non-linear modeling methods or additional feature engineering might improve the model's performance.
+### Model Fitting Effect Image Description:
+The figure above shows the effect of our model on the second test dataset based on the second training dataset, where the red line is the straight line fitted using the least squares method. The yellow points are true values and the blue points are predicted values.
+It can be seen that the fitting effect of our model is very good on linear positive correlation and linear negative correlation data sets.
