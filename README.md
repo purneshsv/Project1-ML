@@ -68,6 +68,65 @@ model.fit(X_train, y_train)
 # Predict on test data
 predictions = model.predict(X_test)
 ```
+### `generate_negative_data`
+
+The `generate_negative_data` function generates synthetic data with two distinct patterns: 
+1. The first half of the features has a **monotonic increasing trend**.
+2. The second half of the features has a **linear decreasing trend** (i.e., negative slope).
+
+This function can be useful for testing model's ability in negative correlations data.
+
+#### Parameters:
+- **`range_x`** (_tuple_): The range of feature values (min, max).
+- **`noise_scale`** (_float_): Standard deviation of the Gaussian noise added to the data.
+- **`size`** (_int_): Number of samples in the dataset.
+- **`num_features`** (_int_): Total number of features (half with increasing trend, half with decreasing trend).
+- **`seed`** (_int_): Random seed for reproducibility.
+
+#### Returns:
+- **`X`** (_numpy array_): Generated feature matrix with both increasing and decreasing trends.
+- **`y`** (_numpy array_): Target values with contributions from the features and added noise.
+
+#### Example Usage:
+
+```python
+from generate_negative_regression_data import generate_negative_data
+
+# Generate negative slope data
+X, y = generate_negative_data(range_x=(0, 10), noise_scale=1.0, size=100, num_features=6, seed=42)
+```
+
+---
+
+### `generate_rotated_positive_data`
+
+The `generate_rotated_positive_data` function generates synthetic data with two patterns:
+1. The first half of the features follows a **monotonic increasing trend**.
+2. The second half exhibits a **wavy (S-shaped) pattern**, adjusted by a rotation matrix to create a slanted shape.
+
+This function generates more complex data to test model's ability.
+
+#### Parameters:
+- **`range_x`** (_tuple_): Specifies the range of feature values (min, max).
+- **`noise_scale`** (_float_): Standard deviation of the Gaussian noise added to the data.
+- **`size`** (_int_): Number of samples in the dataset.
+- **`num_features`** (_int_): Total number of features (half with increasing trend, half with a wavy pattern).
+- **`seed`** (_int_): Random seed for reproducibility.
+- **`rotation_angle`** (_float_, default=45): Angle (in degrees) to rotate the wavy pattern, introducing a slanted S-shape.
+- **`mode`** (_int_, default=0): Determines the scaling factors for the feature values.
+
+#### Returns:
+- **`X`** (_numpy array_): Generated feature matrix with increasing trends and rotated S-shaped patterns.
+- **`y`** (_numpy array_): Target values influenced by the features and noise.
+
+#### Example Usage:
+
+```python
+from generate_positive_regression_data import generate_rotated_positive_data
+
+# Generate positive data with rotation and S-shaped curves
+X, y = generate_rotated_positive_data(range_x=(0, 10), noise_scale=1.0, size=100, num_features=6, seed=42, rotation_angle=45, mode=0)
+```
 
 ## 1. Linear regression with ElasticNet regularization (combination of L2 And L1 regularization)
 
