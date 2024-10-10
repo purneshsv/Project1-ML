@@ -68,15 +68,18 @@ model.fit(X_train, y_train)
 # Predict on test data
 predictions = model.predict(X_test)
 ```
+
 ### `generate_negative_data`
 
-The `generate_negative_data` function generates synthetic data with two distinct patterns: 
+The `generate_negative_data` function generates synthetic data with two distinct patterns:
+
 1. The first half of the features has a **monotonic increasing trend**.
 2. The second half of the features has a **linear decreasing trend** (i.e., negative slope).
 
 This function can be useful for testing model's ability in negative correlations data.
 
 #### Parameters:
+
 - **`range_x`** (_tuple_): The range of feature values (min, max).
 - **`noise_scale`** (_float_): Standard deviation of the Gaussian noise added to the data.
 - **`size`** (_int_): Number of samples in the dataset.
@@ -84,6 +87,7 @@ This function can be useful for testing model's ability in negative correlations
 - **`seed`** (_int_): Random seed for reproducibility.
 
 #### Returns:
+
 - **`X`** (_numpy array_): Generated feature matrix with both increasing and decreasing trends.
 - **`y`** (_numpy array_): Target values with contributions from the features and added noise.
 
@@ -101,12 +105,14 @@ X, y = generate_negative_data(range_x=(0, 10), noise_scale=1.0, size=100, num_fe
 ### `generate_rotated_positive_data`
 
 The `generate_rotated_positive_data` function generates synthetic data with two patterns:
+
 1. The first half of the features follows a **monotonic increasing trend**.
 2. The second half exhibits a **wavy (S-shaped) pattern**, adjusted by a rotation matrix to create a slanted shape.
 
 This function generates more complex data to test model's ability.
 
 #### Parameters:
+
 - **`range_x`** (_tuple_): Specifies the range of feature values (min, max).
 - **`noise_scale`** (_float_): Standard deviation of the Gaussian noise added to the data.
 - **`size`** (_int_): Number of samples in the dataset.
@@ -116,6 +122,7 @@ This function generates more complex data to test model's ability.
 - **`mode`** (_int_, default=0): Determines the scaling factors for the feature values.
 
 #### Returns:
+
 - **`X`** (_numpy array_): Generated feature matrix with increasing trends and rotated S-shaped patterns.
 - **`y`** (_numpy array_): Target values influenced by the features and noise.
 
@@ -134,17 +141,20 @@ X, y = generate_rotated_positive_data(range_x=(0, 10), noise_scale=1.0, size=100
 
 ### ElasticNetModel Overview
 
-The model we've crafted, called **ElasticNetModel**, is an implementation of Elastic Net regression. What makes it special is that it not only uses MSE as the loss function, but also combines L1 (Lasso) and L2 (Ridge) regularization techniques. Here's a clearer view on how we implement this model:
+The model we've crafted, called **ElasticNetModel**, is an implementation of Elastic Net regression. What makes it special is that it not only uses MSE as the loss function, but also combines L1 (Lasso) and L2 (Ridge) regularization techniques. Here's a clearer view on how we implemented this model:
 
 ### Loss Function
 
 - **The loss function consists of the MSE loss, L1 loss, and L2 loss. The loss function is shown as follows** :
 
-
 $\text{Loss}$(w) = $\frac{1}{n}$ $\sum_{i=1}^{n}$ $(y_i - w^T x_i)^2$ + $\lambda$ ($\rho$ $\sum_{j=1}^{d}$ $|w_j|$ + (1 - $\rho$) $\sum_{j=1}^{d}$ $w_j^2$)
 
+<<<<<<< HEAD
 
 ### Then use the gradient descent algorithm to calculate the gradient of the loss function and then update.
+=======
+## Then use the gradient descent algorithm to calculate the gradient of the loss function and then update.
+>>>>>>> purnesh
 
 - **Gradient calculation results of MSE:** :
 
@@ -174,10 +184,10 @@ In summary, our model implements hybrid regularization by combining L1 and L2 pe
 
 ### What the Model Does:
 
--  **Hybrid Regularization**: Out of all the classifiers Elastic Net is more advantageous because it uses a combination of L1 and L2 penalties.
+- **Hybrid Regularization**: Out of all the classifiers Elastic Net is more advantageous because it uses a combination of L1 and L2 penalties.
 
-- **L1 penalty** Reducing the effect of weak predictors makes the model purged of unnecessary items Skipping all the lesser significant variables makes the model slimmer and easily understandable and easy to interpret Especially when one has a large number of potential predictors often it is dreaded to end up with a bloated or overfit model.
-  **L2 penalty** This makes this approach more useful when the features are related in some form, which is very often the case, generally. This is because, when the influences are spread over various parameters of the model ; it ensures that the model can perform optimally in the long run.
+- **L1 penalty** Reducing the effect of weak predictors makes the model purged of unnecessary items. Skipping all the lesser significant variables makes the model slimmer and easily understandable and easy to interpret, especially when one has a large number of potential predictors, often it is dreaded to end up with a bloated or overfit model.
+  **L2 penalty** This makes this approach more useful when the features are related in some form, which is very often the case.This is because, when the influences are spread over various parameters of the model it ensures that the model can perform optimally in the long run.
 
 - **Gradient Descent Optimization**: This technique is crucial when optimizing models in the cases where models are trained on large sets of data and older methods will slow down data processing. It does this in the sense that the different adjustments flow continuously and systematically so as to arrive at optimal value of the performance and hence its value is dependent on the learning rate and accuracy.
 
@@ -210,17 +220,14 @@ For the purpose of the model’s strength and accuracy, we have developed an ela
 - **Method**: To check how well the model is doing, we fed it with data it did not learn with during the learning stage.
 - **Why It Matters**: This is essential for evaluating how good the model is in using the learning to solve other unseen dataset – which is very important in ascertaining the utility of the model in real world where dataset variation is the order of the day.
 
-
-
 ### 4. Model Evaluation Metrics
 
 - **Metrics Used**: To check the accuracy and reliability of the carried out predictions we used several standard regression parameters such as:
   - Mean Squared Error (MSE)
-  Linear – Root Mean Squared Error (RMSE)
+    Linear – Root Mean Squared Error (RMSE)
   - Mean Absolute Error (MAE)
   - R-squared (R²)
 - **Why They’re Important**: These measure give you actual numbers to explain the degree at which the model employed is capable of predicting new data. They assist us in getting an understanding of other aspects of performance including the average magnitude of the errors and variance in the target variable accounted for by the model.
-
 
 ### 5. Probability versus Outcome Plots
 
@@ -244,6 +251,7 @@ By combining these specific types of testing, not only do we guarantee to oursel
 
 We gave some parameters to change in order to improve the performance of our model. This section is a breakdown of each parameter and what each does/means, as well as touches on how tuning them could lead to improved model performance:
 
+<<<<<<< HEAD
 1.⁠ ⁠*Lambdas*
 
    - *Function:* Lambdas are the key elements to the regularization strategies of our model, which we utilized in both L1 (Lasso) and L2 (Ridge) techniques. This alleviates a common overfitting problem in which the model learns noise as if it were real data signals.
@@ -271,6 +279,35 @@ We gave some parameters to change in order to improve the performance of our mod
    - *Function:* In gradient descent optimization, this parameter helps us to set the step size the model takes towards reducing the loss function.
    - *Implication of Adjustment:* Lower learning rates give smaller and safer steps that might help in more finesse model optimization.
    - *Where We Use It:* If the model reaches minimum loss and is going beyond it i.e., overshooting, by decreasing the learning rate we can make sure it converges more stably and accurately to its minima. However, if the rate is too low, it will slow the training process in an overly long way.
+=======
+1. **Lambdas**
+
+   - **Function:** Lambdas are the key elements to the regularization strategies of our model, which we utilized in both L1 (Lasso) and L2 (Ridge) techniques. This alleviates a common overfitting problem in which the model learns noise as if it were real data signals.
+   - **Effect of Regularization:** When the value of lambdas is increased, it increases the penalty on coefficients so that they are constrained to be near zero. This adjustment is beneficial when dealing with complex datasets that could potentially lead to misleading noise.
+   - **When we use it:** When we observe our model is overfitting with training data, we then increase lambdas to rebuild our model in a much generalized way to new, unseen data.
+
+2. **Thresh**
+
+   - **Operation:** Thresh For: Feature Selection Description: It creates a cutoff for feature selection. It simplifies the model by only considering a few significant features. A higher thresh value can remove less useful features by nulling their coefficients and it will improve the model's interpretability on new data.
+   - **Where We Use It:** Thresh is used when there were a lot of features in our dataset and we do not want to perform the data modeling on all those features (so using thresh makes sure that spearmake calculation applied only top x number of feature).
+
+3. **Max_iter**
+
+   - **Function:** It decides the maximum loops (number of iterations) our algorithm performs before stopping.
+   - **Adjustment Impact:** The more iterations the model adjusts its weights with the data, the better it can learn and potentially yield higher accuracy.
+   - **Why We May Use It:** If our model has not yet been optimized, it may require an increase in max_iter. But, it may potentially take more training time which means a tradeoff between accuracy and speed.
+
+4. **Tol**
+
+   - **Function:** Tol — that is, tolerance — how closely does the model have to fit the training data trends before we stop adjusting further.
+   - **Impact of Tuning:** Lowering the value means the model won't stop learning until it achieves a closer fit, this can increase accuracy but would also prolong training time.
+   - **Where We Use This:** This is most useful when high precision matters a lot. However, making the tolerance too tight can result in diminishing returns, especially if more training leads to virtually no progress with prolonged training.
+
+5. **Learning_rate**
+   - **Function:** In gradient descent optimization, this parameter helps us to set the step size the model takes towards reducing the loss function.
+   - **Implication of Adjustment:** Lower learning rates give smaller and safer steps that might help in more finesse model optimization.
+   - **Where We Use It:** If the model reaches minimum loss and is going beyond it i.e., overshooting, by decreasing the learning rate we can make sure it converges more stably and accurately to its minima. However, if the rate is too low, it will slow the training process in an overly long way.
+>>>>>>> purnesh
 
 We can improve this model by tinkering with these parameters to help the model adapt well to the nuances of our data and the requirements of our task, ensuring that we have a good trade-off between accuracy, efficiency of computation, and model lean size.
 
@@ -297,6 +334,7 @@ True, there are certain inputs that the implementation finds difficult working w
 - **Example**: If the data is too noisy, Elastic Net may learn the noise along with the true signal, leading to overfitting on the training set and poor performance in the real world.
 
 - **What We Can Do**:
+<<<<<<< HEAD
 
    - **Increase Regularization**: Turning up the lambda parameter increases the penalties for model complexity, forcing Elastic Net to focus on the main signal and ignore noise.
    
@@ -434,7 +472,13 @@ The image shows six scatter plots comparing the actual target values and the pre
 - All six features exhibit weak linear relationships with the target variable, as evidenced by the scattered points around the fit lines. The model does not capture the target values well, and the fit is not strong.
 - **Features 4, 5, and 6** show negative relationships, meaning that as the feature values increase, the target decreases, though this is not strong.
 - These scatter plots indicate that the model could benefit from more advanced techniques, as simple linear regression appears insufficient for accurately predicting the target values for these features. Non-linear modeling methods or additional feature engineering might improve the model's performance.
+=======
+>>>>>>> purnesh
 
+  - **Increase Regularization**: Turning up the lambda parameter increases the penalties for model complexity, forcing Elastic Net to focus on the main signal and ignore noise.
 
+  - **Filter**: Adjusting the threshold parameter can make the model more or less strict about what signals pass through, helping to filter out noise.
 
+  - **Reduction of Noise**: We can filter out outliers or smooth signals before feeding the data into the model.
 
+This post aims to understand these limitations and the smart ways to get around them, solidifying Elastic Net as an even more powerful tool in predictive modeling.
