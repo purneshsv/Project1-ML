@@ -68,15 +68,18 @@ model.fit(X_train, y_train)
 # Predict on test data
 predictions = model.predict(X_test)
 ```
+
 ### `generate_negative_data`
 
-The `generate_negative_data` function generates synthetic data with two distinct patterns: 
+The `generate_negative_data` function generates synthetic data with two distinct patterns:
+
 1. The first half of the features has a **monotonic increasing trend**.
 2. The second half of the features has a **linear decreasing trend** (i.e., negative slope).
 
 This function can be useful for testing model's ability in negative correlations data.
 
 #### Parameters:
+
 - **`range_x`** (_tuple_): The range of feature values (min, max).
 - **`noise_scale`** (_float_): Standard deviation of the Gaussian noise added to the data.
 - **`size`** (_int_): Number of samples in the dataset.
@@ -84,6 +87,7 @@ This function can be useful for testing model's ability in negative correlations
 - **`seed`** (_int_): Random seed for reproducibility.
 
 #### Returns:
+
 - **`X`** (_numpy array_): Generated feature matrix with both increasing and decreasing trends.
 - **`y`** (_numpy array_): Target values with contributions from the features and added noise.
 
@@ -101,12 +105,14 @@ X, y = generate_negative_data(range_x=(0, 10), noise_scale=1.0, size=100, num_fe
 ### `generate_rotated_positive_data`
 
 The `generate_rotated_positive_data` function generates synthetic data with two patterns:
+
 1. The first half of the features follows a **monotonic increasing trend**.
 2. The second half exhibits a **wavy (S-shaped) pattern**, adjusted by a rotation matrix to create a slanted shape.
 
 This function generates more complex data to test model's ability.
 
 #### Parameters:
+
 - **`range_x`** (_tuple_): Specifies the range of feature values (min, max).
 - **`noise_scale`** (_float_): Standard deviation of the Gaussian noise added to the data.
 - **`size`** (_int_): Number of samples in the dataset.
@@ -116,6 +122,7 @@ This function generates more complex data to test model's ability.
 - **`mode`** (_int_, default=0): Determines the scaling factors for the feature values.
 
 #### Returns:
+
 - **`X`** (_numpy array_): Generated feature matrix with increasing trends and rotated S-shaped patterns.
 - **`y`** (_numpy array_): Target values influenced by the features and noise.
 
@@ -134,15 +141,13 @@ X, y = generate_rotated_positive_data(range_x=(0, 10), noise_scale=1.0, size=100
 
 ## ElasticNetModel Overview
 
-The model we've crafted, called **ElasticNetModel**, is an implementation of Elastic Net regression. What makes it special is that it not only uses MSE as the loss function, but also combines L1 (Lasso) and L2 (Ridge) regularization techniques. Here's a clearer view on how we implement this model:
+The model we've crafted, called **ElasticNetModel**, is an implementation of Elastic Net regression. What makes it special is that it not only uses MSE as the loss function, but also combines L1 (Lasso) and L2 (Ridge) regularization techniques. Here's a clearer view on how we implemented this model:
 
 ## Loss Function
 
 - **The loss function consists of the MSE loss, L1 loss, and L2 loss. The loss function is shown as follows** :
 
-
 $\text{Loss}$(w) = $\frac{1}{n}$ $\sum_{i=1}^{n}$ $(y_i - w^T x_i)^2$ + $\lambda$ ($\rho$ $\sum_{j=1}^{d}$ $|w_j|$ + (1 - $\rho$) $\sum_{j=1}^{d}$ $w_j^2$)
-
 
 ## Then use the gradient descent algorithm to calculate the gradient of the loss function and then update.
 
@@ -174,10 +179,10 @@ In summary, our model implements hybrid regularization by combining L1 and L2 pe
 
 ### What the Model Does:
 
--  **Hybrid Regularization**: Out of all the classifiers Elastic Net is more advantageous because it uses a combination of L1 and L2 penalties.
+- **Hybrid Regularization**: Out of all the classifiers Elastic Net is more advantageous because it uses a combination of L1 and L2 penalties.
 
-- **L1 penalty** Reducing the effect of weak predictors makes the model purged of unnecessary items Skipping all the lesser significant variables makes the model slimmer and easily understandable and easy to interpret Especially when one has a large number of potential predictors often it is dreaded to end up with a bloated or overfit model.
-  **L2 penalty** This makes this approach more useful when the features are related in some form, which is very often the case, generally. This is because, when the influences are spread over various parameters of the model ; it ensures that the model can perform optimally in the long run.
+- **L1 penalty** Reducing the effect of weak predictors makes the model purged of unnecessary items. Skipping all the lesser significant variables makes the model slimmer and easily understandable and easy to interpret, especially when one has a large number of potential predictors, often it is dreaded to end up with a bloated or overfit model.
+  **L2 penalty** This makes this approach more useful when the features are related in some form, which is very often the case.This is because, when the influences are spread over various parameters of the model it ensures that the model can perform optimally in the long run.
 
 - **Gradient Descent Optimization**: This technique is crucial when optimizing models in the cases where models are trained on large sets of data and older methods will slow down data processing. It does this in the sense that the different adjustments flow continuously and systematically so as to arrive at optimal value of the performance and hence its value is dependent on the learning rate and accuracy.
 
@@ -210,17 +215,14 @@ For the purpose of the model’s strength and accuracy, we have developed an ela
 - **Method**: To check how well the model is doing, we fed it with data it did not learn with during the learning stage.
 - **Why It Matters**: This is essential for evaluating how good the model is in using the learning to solve other unseen dataset – which is very important in ascertaining the utility of the model in real world where dataset variation is the order of the day.
 
-
-
 ### 4. Model Evaluation Metrics
 
 - **Metrics Used**: To check the accuracy and reliability of the carried out predictions we used several standard regression parameters such as:
   - Mean Squared Error (MSE)
-  Linear – Root Mean Squared Error (RMSE)
+    Linear – Root Mean Squared Error (RMSE)
   - Mean Absolute Error (MAE)
   - R-squared (R²)
 - **Why They’re Important**: These measure give you actual numbers to explain the degree at which the model employed is capable of predicting new data. They assist us in getting an understanding of other aspects of performance including the average magnitude of the errors and variance in the target variable accounted for by the model.
-
 
 ### 5. Probability versus Outcome Plots
 
@@ -254,20 +256,18 @@ raising the value of lambda leads to increase the amount the penalizes the coeff
 If a model is making sharp learning from data — infact picking up noise as the real signals, then making enhancements to the lambda values can be a good strategy. It does so while also tempering the learning of the model and its corresponding generalization to unseen data of any kind.
 
 - **Use Case:**  
-Thresh is most effective whenever a certain model is overly fitting the training data set. Finally, by making thresh larger, it improves the generalization capability of the model over new, never seen before data.
+  Thresh is most effective whenever a certain model is overly fitting the training data set. Finally, by making thresh larger, it improves the generalization capability of the model over new, never seen before data.
 
 ### 2. Thresh
 
 - **Function:**  
-Thresh decides the elimination point for feature selection after filtering in, shaving the model down to select characteristics that are necessary and excluding others that may distort.
+  Thresh decides the elimination point for feature selection after filtering in, shaving the model down to select characteristics that are necessary and excluding others that may distort.
 
 - **Adjustment Effect:**  
-Raising the thresh value may cause getting rid of secondary variables as their coefficients become zeroes. Such a reduction in the model leads to less accurate results but occasionally, the results are expected to be better for unseen data.
+  Raising the thresh value may cause getting rid of secondary variables as their coefficients become zeroes. Such a reduction in the model leads to less accurate results but occasionally, the results are expected to be better for unseen data.
 
 - **Where To Use It:**  
-Thresh is used to control the measure of variable importance, allowing identifying important features, and at the same time, excluding an excessive number of predictors that have no beneficial impact or, on the contrary, may negatively affect the model’s ability to make adequate predictions. This is more applicable especially where there are many features more than the dependent variables.
-
-
+  Thresh is used to control the measure of variable importance, allowing identifying important features, and at the same time, excluding an excessive number of predictors that have no beneficial impact or, on the contrary, may negatively affect the model’s ability to make adequate predictions. This is more applicable especially where there are many features more than the dependent variables.
 
 ### 3. Max_iter
 
@@ -277,17 +277,17 @@ Thresh is used to control the measure of variable importance, allowing identifyi
 
 ### 4. Tol
 
-- **Function**: This is the same as tolerance; it defines a small the error which must fit our training data before further adjustments are made to stop.r adjustments stop. 
+- **Function**: This is the same as tolerance; it defines a small the error which must fit our training data before further adjustments are made to stop.r adjustments stop.
 - **Impact of Adjustment**: Lowering the `tol` value ensures the model won’t stop learning until the fit is very tight, improving accuracy but extending training time.
-- **When We Use It**: If rate of accuracy must be in the consideration. The most important one is that if you set the tolerance level too low then really long training can actually make no gain at all. 
+- **When We Use It**: If rate of accuracy must be in the consideration. The most important one is that if you set the tolerance level too low then really long training can actually make no gain at all.
 
 ### 5. Learning_rate
 
-- **Function**:  This hyperparameter controls by how much the model should change towards the optimization in the updating of the model. 
-- **Impact of Adjustment**: It reduces the steps taken towards implementation and is much slower but more precise, because it is a smaller learning rate and its implementations are more careful. 
-- **When We Use It**: However, if the model is over the point that represents the minimal loss, it means that the learning rate is oversized, thus should be decreased to improve the stability and accuracy of the convergence. Nonetheless, the rate of learning may be reduced to an extreme low in the presence of a low rate. 
+- **Function**: This hyperparameter controls by how much the model should change towards the optimization in the updating of the model.
+- **Impact of Adjustment**: It reduces the steps taken towards implementation and is much slower but more precise, because it is a smaller learning rate and its implementations are more careful.
+- **When We Use It**: However, if the model is over the point that represents the minimal loss, it means that the learning rate is oversized, thus should be decreased to improve the stability and accuracy of the convergence. Nonetheless, the rate of learning may be reduced to an extreme low in the presence of a low rate.
 
-These two parameters, therefore, can be tuned to optimize accuracy for given data distribution and complexity of task, computational cost, and model complexity. 
+These two parameters, therefore, can be tuned to optimize accuracy for given data distribution and complexity of task, computational cost, and model complexity.
 
 ## Q4.Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
 
@@ -306,6 +306,7 @@ These two parameters, therefore, can be tuned to optimize accuracy for given dat
 - **The Challenge**:Think of your data as listening to one of those quiet FM radio stations during a thunderstorm, that is what this is like. This then becomes static (noise) that can drown the music (true patterns), and thus it makes it hard for the Elastic Net to hear what is important.
 - **What Happens**:If the data is too noisy, Elastic Net might fit to the noise instead of the music and learn something that works great on training data but will falter in practice.
 - **What We Can Do**:
+
   - **Increase Regularization**:we have the option here to turn up the lambdas knob and increase penalties for complexity, allowing our model to focus in on every loud symptomatic signal while ignoring that static.
   - **Threshold Tuning**: Changing the thresh parameter to allow us to be more selective about which features we let into the model, and cut out those that tend to contain more noise than signal.
 
@@ -313,10 +314,10 @@ These two parameters, therefore, can be tuned to optimize accuracy for given dat
 
 By acknowledging these limitations and using smart strategies to overcome them, we can increase the potential of Elastic Net because another graphical preferred in predictive modelling.
 
-
 - ## Visualization
 
 ![alt text](1.png)
+
 ### Scatter Plots of Train Features vs Target
 
 This image shows a series of scatter plots, each representing the relationship between a different feature (Feature 1 to Feature 6) and a target variable (Y_train) based on training data. Each plot displays the data points in two dimensions:
@@ -331,9 +332,7 @@ The purpose of these plots is typically to visually assess the relationship betw
 
 Overall, these scatter plots can help in determining which features might be relevant for modeling, although none of the features shown here have a distinct or strong linear relationship with the target variable.
 
-
 ![alt text](2.png)
-
 
 ### Overview of Each Feature Plot Analysis
 
@@ -345,10 +344,12 @@ The image shows scatter plots of six different features (labeled "Test Feature 1
 - **Y_Test**: This is the target variable (possibly the dependent variable or output you're trying to predict). It is plotted on the y-axis for each subplot.
 
 ### Visual Insights:
+
 - For **Feature 1, 2, 4, 5, and 6**, the scatter seems somewhat spread out without clear patterns. This may suggest that these features do not have a strong linear relationship with the target variable.
 - For **Feature 3**, the scatter plot shows more of a linear relationship, indicating that this feature might have a stronger correlation with the target variable compared to others.
 
 ### Uses:
+
 - **Feature Importance**: These plots can help you visually assess which features might be more important for predicting the target variable based on how well the feature correlates with the target (e.g., Feature 3 seems more relevant).
 - **Correlation Analysis**: You might use these plots to further investigate whether linear or nonlinear regression models could capture the relationships seen in these features.
 
@@ -364,13 +365,14 @@ The image shows scatter plots of six different features (labeled "Test Feature 1
 - **Y_Test**: This is the target variable (possibly the dependent variable or output you're trying to predict). It is plotted on the y-axis for each subplot.
 
 ### Visual Insights:
+
 - For **Feature 1, 2, 4, 5, and 6**, the scatter seems somewhat spread out without clear patterns. This may suggest that these features do not have a strong linear relationship with the target variable.
 - For **Feature 3**, the scatter plot shows more of a linear relationship, indicating that this feature might have a stronger correlation with the target variable compared to others.
 
 ### Uses:
+
 - **Feature Importance**: These plots can help you visually assess which features might be more important for predicting the target variable based on how well the feature correlates with the target (e.g., Feature 3 seems more relevant).
 - **Correlation Analysis**: You might use these plots to further investigate whether linear or nonlinear regression models could capture the relationships seen in these features.
-
 
 ![alt text](4.png)
 
@@ -381,6 +383,7 @@ The image shows scatter plots of six features (Feature 1 through Feature 6) plot
 ### Key Observations:
 
 1. **Feature 1 to Feature 3**:
+
    - All three features show a strong positive linear correlation with the target variable (Y_Train).
    - The points align closely along a positively sloped line, indicating that as these feature values increase, the target variable increases in a linear fashion.
 
@@ -389,12 +392,11 @@ The image shows scatter plots of six features (Feature 1 through Feature 6) plot
    - The points align closely along a negatively sloped line, suggesting that as these feature values increase, the target variable decreases.
 
 ### General Insights:
+
 - All six features display clear linear relationships with the target, either positive (Feature 1 to 3) or negative (Feature 4 to 6).
 - These patterns suggest that linear
 
-
 ![alt text](5.png)
-
 
 ### Scatter Plot Analysis for Test Features vs. Target
 
@@ -405,23 +407,19 @@ The image shows scatter plots of six features (Test Feature 1 through Test Featu
 1. **Feature 1 to Feature 6**:
    - Each scatter plot shows a wide spread of points without a clear pattern, suggesting weak or no strong linear relationships between the features and the target variable.
    - The lack of clustering along a line indicates that none of the features exhibit a strong direct correlation with the target.
-   
 2. **Feature 5**:
+
    - There appears to be a slight downward trend, indicating a weak negative correlation between Feature 5 and the target (Y_Test).
 
 3. **Feature 6**:
    - There is some clustering in the lower right quadrant, possibly indicating a negative influence on the target, but the scatter remains wide.
 
 ### General Insights:
+
 - None of the features show a strong, easily identifiable linear correlation with the target variable, as the data points are dispersed across all plots.
 - This suggests that more complex modeling techniques (e.g., non-linear methods) or additional feature engineering may be needed to capture meaningful patterns in the data.
 
-
-
-
-
 ![alt text](6.png)
-
 
 ### Regression Analysis for Features vs. Actual and Predicted Target Values
 
@@ -430,6 +428,7 @@ The image shows six scatter plots comparing the actual target values and the pre
 ### Key Observations:
 
 1. **Feature 1 to Feature 3**:
+
    - The fit lines have positive slopes, suggesting a weak positive relationship between these features and the target variable.
    - The actual and predicted values are dispersed around the fit line with noticeable variance, indicating that the model's predictions are not tightly aligned with the actual values. The fit is somewhat loose, and the features do not have a strong linear relationship with the target.
 
@@ -438,10 +437,7 @@ The image shows six scatter plots comparing the actual target values and the pre
    - Similar to Features 1-3, there is substantial dispersion of the actual and predicted values around the fit line, suggesting weak predictive power and variability in the model's predictions for these features.
 
 ### General Insights:
+
 - All six features exhibit weak linear relationships with the target variable, as evidenced by the scattered points around the fit lines. The model does not capture the target values well, and the fit is not strong.
 - **Features 4, 5, and 6** show negative relationships, meaning that as the feature values increase, the target decreases, though this is not strong.
 - These scatter plots indicate that the model could benefit from more advanced techniques, as simple linear regression appears insufficient for accurately predicting the target values for these features. Non-linear modeling methods or additional feature engineering might improve the model's performance.
-
-
-
-
