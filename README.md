@@ -314,134 +314,47 @@ By acknowledging these limitations and using smart strategies to overcome them, 
 
 - ## Visualization
 
+### The first train dataset:
 ![alt text](1.png)
+### Scatter Plots of Train Features
 
-## Visualization Overview
+This image shows a series of scatter plots, each representing the relationship between a different feature (Feature 1 to Feature 6) and Y_train based on training data. Each plot displays the data points in two dimensions:
 
-**Axes:**  
-The plots display the target variable on the Y-axis and the features on the X-axis for each plot.
+- The horizontal axis (X-axis) shows values of a specific feature.
+- The vertical axis (Y-axis) represents the values of Y_train.
 
-**Purpose:**  
-These plots are commonly used to evaluate the relationships between each feature and the target variable. This evaluation helps in deciding which features to select, how to potentially transform them, and to understand the distribution and correlations within the data.
+The purpose of these plots is typically to visually assess the relationship between the features and the target variable. Observations can be made regarding the distribution, trend, or any potential outliers in the data. From the plots:
 
-## Analysis of Individual Plots
+- **Feature 1, Feature 2, Feature 3:** These features display a scattered distribution with respect to Y_train as well as relatively clear linear relationships.
+- **Feature 4, Feature 5, Feature 6:** These features show some vertical dispersion and a less clear linear relationship.
 
-### Feature 1 vs Target
-- **Observation:** The scatter is loose and appears random, with no discernible trend towards any target line, implying little to no correlation with the target.
+Overall, these scatter plots can help in determining which features might be relevant for modeling, although none of the features shown here have a distinct or strong linear relationship with the target variable.
 
-### Feature 2 vs Target
-- **Observation:** A few data points are noticeably scattered along the Y-axis, with no clear linear pattern, suggesting either a very low positive or possibly negative correlation.
-
-### Feature 3 vs Target
-- **Observation:** Data points are vertically distributed, centered around zero on the X-axis. This plot suggests a very poor, if any, direct positive correlation between Feature 3 and the target.
-
-### Feature 4 vs Target
-- **Observation:** While data points are widely dispersed, there is a slight indication of a weak relationship, as the spread is somewhat curved upwards.
-
-### Feature 5 vs Target
-- **Observation:** Similar to Feature 4, with a slight upward curve in the spread, which may indicate a very weak positive correlation, though the slope is minimal.
-
-### Feature 6 vs Target
-- **Observation:** Data points are concentrated around specific X-values, suggesting that Feature 6 might be categorical or discretized. The relationship to the target is not clearly linear.
-
-## General Observations
-
-### Lack of Strong Linear Relationships
-- **Details:** No features show a strong linear relationship with the target, indicating that nonlinear models or transformations might be more suitable.
-
-### Potential for Non-linear Analysis
-- **Details:** Exploring non-linear effects or interaction effects could be fruitful given the observed patterns.
-
-### Noise and Variability
-- **Details:** The significant dispersion and overlap of data points suggest high variability within features affecting the target, or noise.
-
+### The first test dataset:
 ![alt text](2.png)
 
+### Overview of Each Feature Plot Analysis
 
-## Overview of Each Feature Plot Analysis
+The image shows scatter plots of six different features (labeled "Test Feature 1" through "Test Feature 6") plotted against "Y_Test". Each subplot represents the data of one specific demension of feature.
 
-### Test Feature 1 vs Target
-- **Distribution:** The data points are randomly and evenly distributed across the range of Feature 1 without any obvious pattern.
-- **Interpretation:** There appears to be no clear correlation between Feature 1 and the target, indicating high dispersion or heteroscedasticity and potentially non-linear relationships.
+### Visual Insights:
+- For **Feature 1, 2, 4, 5, and 6**, the scatter seems somewhat spread out without clear patterns. This may suggest that these features do not have a strong linear relationship with the target variable.
+- For **Feature 3**, the scatter plot shows more of a linear relationship, indicating that this feature might have a stronger correlation with the target variable compared to others.
 
-### Test Feature 2 vs Target
-- **Distribution:** Similar to Feature 1, points are spread across a wide range without a distinct pattern.
-- **Interpretation:** The absence of clear linearity suggests that simple linear methods may be ineffective.
+### Meaning of this graph:
+These plots visualize the dataset to help understand our first dataset.
 
-### Test Feature 3 vs Target
-- **Distribution:** Points are spread out, albeit slightly less than in previous cases.
-- **Interpretation:** Despite a slight centralization, there is still very little indication of a linear relationship with the target.
-
-### Test Feature 4 vs Target
-- **Distribution:** The scatter begins to resemble a downward sloping line, indicating that values may decrease as Feature 4 increases.
-- **Interpretation:** This could suggest a negative dependency of Feature 4 on the target, although it might not be strong. Correlation coefficients or more complex regression analyses could further explore this relationship.
-
-### Test Feature 5 vs Target
-- **Distribution:** Points display a steeper upward trend compared to other features.
-- **Interpretation:** There is a limited yet visible positive correlation, indicating that the target may increase slightly as Feature 5 increases. This feature might offer some predictive value when integrated into a model.
-
-### General Observations
-- **Lack of Strong Linear Relationships:** None of the features display strong linear relationships with the target. This suggests that relationships, if present, might be non-linear.
-- **Potential for Non-linear Analysis:** Given the lack of clear linear correlations, non-linear modeling techniques such as decision trees or neural networks might better capture complex patterns between features and the target.
-- **Importance of Feature Engineering:** Considering the subtle trends observed in Features 4 and 5, feature engineering might help in revealing more detailed relationships, possibly enhancing model performance.
-
-These plots are crucial for the preliminary analysis, guiding further statistical testing and modeling approaches. Exploring these relationships more deeply could yield insights critical to developing effective predictive models.
-
-
-## Test Feature 6 vs Target
-
-### Distribution
-- The distribution is broad, similar to Features 1 and 2, with no discernible direction in the scatter of data points.
-
-### Interpretation
-- There is no visible significant linear relationship, indicating that Feature 6 may not effectively predict the target using linear methods alone.
-
-## General Observations
-
-### No Strong Linear Relationships
-- Across all features, there are no strong, clear linear relationships with the target. This suggests that the relationships, if present, might be non-linear, or the target is influenced by external factors or noise not directly captured by these features.
-
-### Potential for Non-linear Analysis
-- Due to the absence of linear relationships, employing non-linear modeling techniques could be advantageous. Methods such as decision trees, random forests, or neural networks are capable of capturing more complex interactions between features and the target.
-
-### Feature Selection and Engineering
-- Features 4 and 5 exhibit some patterns that may warrant further investigation. Engaging in feature engineering could help uncover more intricate relationships, like interactions between features or transformations that might better expose their relationships with the target.
-
-This comprehensive analysis underscores the need for a broader approach in modeling techniques to adequately predict the target variable. Such an approach should consider the non-linear dynamics of the dataset, along with a focused attempt at enhancing feature selection and engineering strategies to improve model accuracy and robustness.
-
-
+### Model fitting effect:
 ![alt text](3.png)
 
-## Breakdown of Each Plot Analysis
+### Image Description:
+The figure above shows the effect of our model on the first test set based on the first training set, where the red line is the straight line fitted using the least squares method. The yellow points are true values and the blue points are predicted values.
+It can be seen that the fitting effect of our model is very good at predicting the test level.
 
-### Feature 1 vs. Actual and Predicted Target
-- **Actual Values:** Represented by yellow dots.
-- **Predicted Values:** Represented by blue dots.
-- **Fit Line:** The red dashed line shows the regression line that represents the predicted values based on Feature 1.
-- **Interpretation:** The fit line indicates moderate fitting, implying a certain degree of linear predictability from Feature 1 to the target.
-
-### Feature 2 vs. Actual and Predicted Target
-- **Interpretation:** The spread of predicted values is wider, indicating more variance in the predictions relative to the actual values, suggesting less predictive accuracy from Feature 2.
-
-### Feature 3 vs. Actual and Predicted Target
-- **Interpretation:** The predictions closely follow the actual values with the fit line approximating a good linear fit, suggesting that Feature 3 might have a strong predictive power regarding the target.
-
-### Feature 4 vs. Actual and Predicted Target
-- **Interpretation:** The fit line indicates an inverse relationship, as the line slopes downward. This might suggest that as Feature 4 increases, the target decreases.
-
-### Feature 5 vs. Actual and Predicted Target
-- **Interpretation:** Feature 5 shows a slightly poorer fitting compared to others, with the fit line sloping slightly, which might indicate only a weak predictive relationship.
-
-### Feature 6 vs. Actual and Predicted Target
-- **Interpretation:** The predictions and actual values are somewhat aligned, but the spread is still notable. The fit line shows a moderate predictive relationship.
-
-## General Observations
-- **Evaluation of Fit Lines:** The fit lines in these plots are crucial for understanding how well the model predicts the target based on each feature. A closer fit of the line to the actual values indicates a stronger predictive ability of the feature.
-- **Comparison Across Features:** Some features (like Feature 3 and Feature 6) show a closer alignment between the predicted and actual values, indicating they might be more useful predictors of the target.
-- **Predictive Power of Features:** The degree of scatter around the fit lines across different features illustrates the variability in the model's accuracy. Features with less scatter and closer fit lines are generally better at predicting the target.
+---
 
 
-
+### The second train dataset:
 ![alt text](4.png)
 
 ## Scatter Plot Analysis
@@ -476,7 +389,7 @@ This comprehensive analysis underscores the need for a broader approach in model
 - **Importance of Advanced Statistical Techniques:** Techniques such as polynomial regression or machine learning algorithms like decision trees might be necessary to model these relationships more effectively.
 
 
-
+### The second test dataset:
 ![alt text](5.png)
 
 
