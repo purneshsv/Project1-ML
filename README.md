@@ -141,7 +141,7 @@ The model we've crafted, called **ElasticNetModel**, is an implementation of Ela
 - **The loss function consists of the MSE loss, L1 loss, and L2 loss. The loss function is shown as follows** :
 
 
-$\text{Loss}$ = $\frac{1}{n}$ $\sum_{i=1}^n$ $(y_i - \hat{y}_i)^2$ + $\lambda_1$ $\sum_{j=1}^m$ $|w_j|$ + $\lambda_2 \sum_{j=1}^m w_j^2$
+$\text{Loss}$(w) = $\frac{1}{n}$ $\sum_{i=1}^{n}$ $(y_i - w^T x_i)^2$ + $\lambda$ ($\rho$ $\sum_{j=1}^{d}$ $|w_j|$ + (1 - $\rho$) $\sum_{j=1}^{d}$ $w_j^2$)
 
 
 ## Then use the gradient descent algorithm to calculate the gradient of the loss function and then update.
