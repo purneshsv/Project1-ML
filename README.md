@@ -178,39 +178,37 @@ By weaving together these detailed testing methods, we not only affirm that the 
 
 ## Model Optimization Parameters
 
-To optimize the performance of our model, we’ve provided several adjustable parameters. Here’s a breakdown of each parameter, explaining their function and how adjustments can enhance model performance:
+We gave some parameters to change in order to improve the performance of our model. This section is a breakdown of each parameter and what each does/means, as well as touches on how tuning them could lead to improved model performance:
 
-### 1. Lambdas
+1. **Lambdas**
 
-- **Function**: Lambdas are central to our model’s regularization strategies, utilized in both L1 (Lasso) and L2 (Ridge) techniques. This helps prevent overfitting, a common issue where the model learns noise as if it were true data signals.
-- **Impact of Adjustment**: Increasing the lambdas value amplifies the penalty on the model’s coefficients, effectively pulling them towards zero. This adjustment is beneficial when dealing with complex datasets that could potentially lead to misleading noise.
-- **When We Use It**: If we observe our model overfitting to training data, boosting the lambdas value can help mitigate this, promoting better generalization to new, unseen data.
+   - **Function:** Lambdas are the key elements to the regularization strategies of our model, which we utilized in both L1 (Lasso) and L2 (Ridge) techniques. This alleviates a common overfitting problem in which the model learns noise as if it were real data signals.
+   - **Effect of Regularization:** When the value of lambdas is increased, it increases the penalty on coefficients so that they are constrained to be near zero. This adjustment is beneficial when dealing with complex datasets that could potentially lead to misleading noise.
+   - **When we use it:** When we observe our model is overfitting with training data, we then increase lambdas to rebuild our model in a much generalized way to new, unseen data.
 
-### 2. Thresh
+2. **Thresh**
 
-- **Function**: Thresh determines the cutoff for feature selection, which simplifies the model by focusing only on impactful features.
-- **Impact of Adjustment**: A higher thresh value is likely to eliminate less significant features by setting their coefficients to zero, which can enhance both the interpretability and performance of the model on new data.
-- **When We Use It**: If our dataset has an abundance of features, adjusting thresh helps us streamline the model, concentrating on the most influential factors for predictions.
+   - **Operation:** Thresh For: Feature Selection Description: It creates a cutoff for feature selection. It simplifies the model by only considering a few significant features. A higher thresh value can remove less useful features by nulling their coefficients and it will improve the model's interpretability on new data.
+   - **Where We Use It:** Thresh is used when there were a lot of features in our dataset and we do not want to perform the data modeling on all those features (so using thresh makes sure that spearmake calculation applied only top x number of feature).
 
-### 3. Max_iter
+3. **Max_iter**
 
-- **Function**: This parameter sets the maximum number of iterations our algorithm will execute before stopping.
-- **Impact of Adjustment**: Allowing more iterations gives the model additional opportunities to refine its weights to the data, potentially improving its accuracy.
-- **When We Use It**: If our model hasn’t yet reached its optimal state, increasing `max_iter` may be necessary. However, this could lead to longer training times, requiring a balance between precision and efficiency.
+   - **Function:** It decides the maximum loops (number of iterations) our algorithm performs before stopping.
+   - **Adjustment Impact:** The more iterations the model adjusts its weights with the data, the better it can learn and potentially yield higher accuracy.
+   - **Why We May Use It:** If our model has not yet been optimized, it may require an increase in max_iter. But, it may potentially take more training time which means a tradeoff between accuracy and speed.
 
-### 4. Tol
+4. **Tol**
 
-- **Function**: Tol, or tolerance, defines how close the model needs to fit the training data trends before ceasing further adjustments.
-- **Impact of Adjustment**: Setting a smaller `tol` value means the model won’t stop learning until it achieves a closer fit, which can enhance accuracy but also extend training duration.
-- **When We Use It**: This is particularly valuable when high precision is crucial. However, setting the tolerance too tight might lead to diminishing returns, especially in terms of prolonged training without significant gains.
+   - **Function:** Tol — that is, tolerance — how closely does the model have to fit the training data trends before we stop adjusting further.
+   - **Impact of Tuning:** Lowering the value means the model won't stop learning until it achieves a closer fit, this can increase accuracy but would also prolong training time.
+   - **Where We Use This:** This is most useful when high precision matters a lot. However, making the tolerance too tight can result in diminishing returns, especially if more training leads to virtually no progress with prolonged training.
 
-### 5. Learning_rate
+5. **Learning_rate**
+   - **Function:** In gradient descent optimization, this parameter helps us to set the step size the model takes towards reducing the loss function.
+   - **Implication of Adjustment:** Lower learning rates give smaller and safer steps that might help in more finesse model optimization.
+   - **Where We Use It:** If the model reaches minimum loss and is going beyond it i.e., overshooting, by decreasing the learning rate we can make sure it converges more stably and accurately to its minima. However, if the rate is too low, it will slow the training process in an overly long way.
 
-- **Function**: In gradient descent optimization, this parameter controls the step size the model takes towards minimizing the loss function.
-- **Impact of Adjustment**: Lowering the learning rate results in smaller, more cautious steps, potentially leading to more precise model optimization.
-- **When We Use It**: If the model is overshooting the minimal loss point, reducing the learning rate can help achieve a more stable and accurate convergence. However, too low a rate may slow down the training process excessively.
-
-By fine-tuning these parameters, we can adjust our model to better fit the specific characteristics of the data and the demands of the task at hand, striking an optimal balance between accuracy, computational efficiency, and model simplicity.
+We can improve this model by tinkering with these parameters to help the model adapt well to the nuances of our data and the requirements of our task, ensuring that we have a good trade-off between accuracy, efficiency of computation, and model lean size.
 
 # Q4.Are there specific inputs that your implementation has trouble with? Given more time, could you work around these or is it fundamental?
 
