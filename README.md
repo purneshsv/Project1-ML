@@ -140,7 +140,7 @@ The model we've crafted, called **ElasticNetModel**, is an implementation of Ela
 
 The loss function consists of the MSE loss, L1 loss, and L2 loss. The loss function is shown as follows :
 
-$\text{Loss} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2 + \lambda_1 \sum_{j=1}^m |w_j| + \lambda_2 \sum_{j=1}^m w_j^2$
+$\text{Loss}$ = $\frac{1}{n}$ $\sum_{i=1}^n$ $(y_i - \hat{y}_i)^2$ + $\lambda_1$ $\sum_{j=1}^m$ $|w_j|$ + $\lambda_2 \sum_{j=1}^m w_j^2$
 
 ## Then use the gradient descent algorithm to calculate the gradient of the loss function and then update.
 
@@ -545,36 +545,6 @@ This comprehensive analysis underscores the need for a broader approach in model
 - **Predictive Strength:** Features 1, 2, and 3 display strong linear correlations with the target, indicating high predictive strength.
 - **Inverse Relationships:** Features 4, 5, and 6 exhibit inverse relationships, which are consistently evident from their respective plots.
 - **Model Performance:** The overall alignment of the fit lines across all features suggests that the regression model generally performs well, capturing the primary trends in the dataset effectively.
-
-
-
-![alt text](7.png)
-
-## Scatter Plot Analysis of Features vs. Target
-
-### Feature 1 vs. Target
-- **Distribution:** Shows a broad range of target values with no apparent trend or consistent pattern.
-- **Interpretation:** Feature 1 exhibits high variability with the target, indicating no clear linear relationship, which suggests the influence of other factors or non-linear dynamics.
-
-### Feature 2 vs. Target
-- **Distribution:** The data points are spread out across the target range, with some concentration in the middle.
-- **Interpretation:** Slightly more structure than Feature 1, but still lacks a definitive pattern that would suggest a strong linear correlation.
-
-### Feature 3 vs. Target
-- **Distribution:** Data points appear more clustered around the center of the target range, yet spread wide vertically.
-- **Interpretation:** Indicates some degree of association, possibly non-linear, with the target, as points cluster around a central target value but do not form a distinct trend.
-
-### Feature 4 vs. Target
-- **Distribution:** Similar to Feature 3 with a somewhat narrower spread across the target range.
-- **Interpretation:** Might suggest a mild, potentially non-linear relationship with the target given the more concentrated clustering of data points.
-
-### Feature 5 vs. Target
-- **Distribution:** Points are densely packed in a narrower range of the target, suggesting a more consistent relationship.
-- **Interpretation:** This concentration and consistency could point to a stronger association with the target than the previous features, warranting further analysis.
-
-### Feature 6 vs. Target
-- **Distribution:** Shows a wide distribution but with a clear boundary, not extending beyond certain target values.
-- **Interpretation:** Although dispersed, the containment within specific target bounds suggests possible categorical or bounded influence of Feature 6 on the target.
 
 ## General Observations
 - **Trends and Relationships:** These scatter plots generally do not show strong linear correlations, indicating the potential necessity for non-linear modeling approaches to capture the relationships between features and the target.
