@@ -431,39 +431,24 @@ It can be seen that the fitting effect of our model is very good at predicting t
 ![alt text](6.png)
 
 
-## Regression Analysis for Features vs. Actual and Predicted Target Values
+### Regression Analysis for Features vs. Actual and Predicted Target Values
 
-### Feature 1 vs. Actual and Predicted Target
-- **Actual Values:** Represented by yellow dots.
-- **Predicted Values:** Represented by blue dots.
-- **Fit Line:** Red dashed line indicating the regression model's predictions.
-- **Interpretation:** The close alignment of the fit line with both actual and predicted values suggests that Feature 1 has a strong linear correlation with the target, making it a potentially strong predictor.
+The image shows six scatter plots comparing the actual target values and the predicted target values for six features (Feature 1 through Feature 6) against the target variable labeled "Y." Each subplot also includes a red dashed line representing the linear fit for each feature.
 
-### Feature 2 vs. Actual and Predicted Target
-- **Interpretation:** This plot shows a tight correlation with a linear progression similar to Feature 1, indicating effective predictive capabilities of Feature 2 with a robust linear relationship.
+### Key Observations:
 
-### Feature 3 vs. Actual and Predicted Target
-- **Interpretation:** Despite the wide range of target values, the fit line closely follows the trend in actual and predicted values, suggesting that Feature 3 strongly influences the target, albeit with some potential outliers or high variance.
+1. *Feature 1 to Feature 3*:
+   - The fit lines have positive slopes, suggesting a weak positive relationship between these features and the target variable.
+   - The actual and predicted values are dispersed around the fit line with noticeable variance, indicating that the model's predictions are not tightly aligned with the actual values. The fit is somewhat loose, and the features do not have a strong linear relationship with the target.
 
-### Feature 4 vs. Actual and Predicted Target
-- **Interpretation:** The downward slope of the fit line suggests an inverse relationship between Feature 4 and the target, where increasing values of Feature 4 correlate with decreasing target values. This inverse relationship might require further analysis to understand causal factors.
+2. *Feature 4 to Feature 6*:
+   - The fit lines have negative slopes, indicating a negative relationship between these features and the target variable.
+   - Similar to Features 1-3, there is substantial dispersion of the actual and predicted values around the fit line, suggesting weak predictive power and variability in the model's predictions for these features.
 
-### Feature 5 vs. Actual and Predicted Target
-- **Interpretation:** Feature 5 shows a downward trend similar to Feature 4, indicating a negative correlation. However, the scatter is somewhat more dispersed, suggesting less consistency in the predictive accuracy compared to other features.
-
-### Feature 6 vs. Actual and Predicted Target
-- **Interpretation:** The fit line demonstrates an inverse relationship, similar to Features 4 and 5, but with a tighter clustering of points around the line, enhancing its predictive validity.
-
-## General Observations
-- **Predictive Strength:** Features 1, 2, and 3 display strong linear correlations with the target, indicating high predictive strength.
-- **Inverse Relationships:** Features 4, 5, and 6 exhibit inverse relationships, which are consistently evident from their respective plots.
-- **Model Performance:** The overall alignment of the fit lines across all features suggests that the regression model generally performs well, capturing the primary trends in the dataset effectively.
-
-## General Observations
-- **Trends and Relationships:** These scatter plots generally do not show strong linear correlations, indicating the potential necessity for non-linear modeling approaches to capture the relationships between features and the target.
-- **Predictive Insights:** The variability and patterns observed suggest that some features might have more influence on the target, possibly in non-obvious or non-linear ways.
-- **Implications for Modeling:** The lack of strong linear trends across all features reinforces the need for sophisticated analytical techniques, such as machine learning algorithms that can handle non-linearity and complex interactions more effectively.
-
+### General Insights:
+- All six features exhibit weak linear relationships with the target variable, as evidenced by the scattered points around the fit lines. The model does not capture the target values well, and the fit is not strong.
+- *Features 4, 5, and 6* show negative relationships, meaning that as the feature values increase, the target decreases, though this is not strong.
+- These scatter plots indicate that the model could benefit from more advanced techniques, as simple linear regression appears insufficient for accurately predicting the target values for these features. Non-linear modeling methods or additional feature engineering might improve the model's performance.
 
 
 
